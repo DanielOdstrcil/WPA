@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <!-- Nastavení kódování a zobrazení na zařízeních různých velikostí -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cssm.css">
+    <!-- Název stránky v záložce prohlížeče -->
+    <title>Divadlo Zlín - Program a Vstupenky</title>
+    <!-- Styly pro vizuální úpravu stránky -->
+    <style>
+        /* Základní styly pro stránku */
+        body {
+            font-family: Arial, sans-serif; /* Nastavení písma */
+            margin: 0; /* Odstup od okraje stránky */
+            padding: 0; /* Odsazení obsahu stránky */
+            position: relative; /* Relativní pozice pro footer */
+            min-height: 100vh; /* Minimální výška pro zajištění, aby footer byl vždy dole */
+        }
+
+        /* Styly pro footer */
+        footer {
+            background-color: #333; /* Barva pozadí */
+            color: #fff; /* Barva textu */
+            text-align: center; /* Zarovnání textu na střed */
+            padding: 10px 0; /* Odsazení horní a dolní okraje */
+            position: absolute; /* Absolutní pozice pro zajištění, aby byl vždy dole */
+            bottom: 0; /* Zarovnání na dolní okraj */
+            width: 100%; /* Šířka na 100% šířky okna */
+        }
+
+        /* Styly pro rezervaci */
+        #rezervace {
+            padding-bottom: 60px; /* Odsazení dolního okraje, aby nebyl footer přes něj */
+        }
+
+        /* Styly pro ISIC pole */
+        #isicInput {
+            display: none; /* Skrytí pole pro zadání čísla ISIC karty */
+        }
+       
+    </style>
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Divadlo Zlín</h1> <!-- Nadpis stránky -->
+        <!-- Navigace -->
+        <nav>
+            <ul>
+                <li><a href="htmlodivadle.html">O divadle</a></li>
+                <li><a href="htmlv.html">Vstupenky</a></li>
+                <li><a href="htmlkontakt.html">Kontakt</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- Program -->
+    <section id="program">
+        <h2>Aktuální program</h2>
+        <!-- Seznam divadelních her -->
+        <ul>
+            <li><strong>Hamlet</strong> - cena: 250 Kč</li> <!-- Divadelní hra Hamlet -->
+            <li><strong>Don Giovanni</strong> - cena: 300 Kč</li> <!-- Divadelní hra Don Giovanni -->
+            <li><strong>Romeo a Julie</strong> - cena: 200 Kč</li> <!-- Divadelní hra Romeo a Julie -->
+            <li><strong>Veselé paničky windsorské</strong> - cena: 280 Kč</li> <!-- Divadelní hra Veselé paničky windsorské -->
+        </ul>
+        <!-- Formulář pro rezervaci vstupenek -->
+        <form action="process_reservation.php" method="POST" id="reservationForm" onsubmit="return confirmReservation()">
+            <label for="name">Jméno:</label> <!-- Popisek pro pole pro zadání jména -->
+            <input type="text" id="name" name="name" required> <!-- Pole pro zadání jména -->
+            <label for="email">Email:</label> <!-- Popisek pro pole pro zadání emailu -->
+            <input type="email" id="email" name="email" required> <!-- Pole pro zadání emailu -->
+            <label for="show">Vyberte představení:</label> <!-- Popisek pro výběr divadelní hry -->
+            <select id="show" name="show" required> <!-- Výběrové pole s možnostmi divadelních her -->
+                <option value="hamlet">Hamlet</option> <!-- Možnost divadelní hry Hamlet -->
+                <option value="don_giovanni">Don Giovanni</option> <!-- Možnost divadelní hry Don Giovanni -->
+                <option value="romeo_a_julie">Romeo a Julie</option> <!-- Možnost divadelní hry Romeo a Julie -->
+                <option value="vesele_panic">Veselé paničky windsorské</option> <!-- Možnost divadelní hry Veselé paničky windsorské -->
+            </select>
+            <!-- Počet vstupenek pro různé kategorie -->
+            <label for="senior_tickets">Počet senior vstupenek:</label> <!-- Popisek pro pole pro zadání počtu senior vstupenek -->
+            <input type="number" id="senior_tickets" name="senior_tickets" min="0" onchange="calculateTotal()"> <!-- Pole pro zadání počtu senior vstupenek -->
+            <div id="seniorPrice">Cena za senior vstupenku: 0 Kč</div> <!-- Zobrazení ceny za senior vstupenku -->
+            <label for="student_tickets">Počet student vstupenek:</label> <!-- Popisek pro pole pro zadání počtu student vstupenek -->
+            <input type="number" id="student_tickets" name="student_tickets" min="0" onchange="calculateTotal()"> <!-- Pole pro zadání počtu student vstupenek -->
+            <div id="studentPrice">Cena za student vstupenku: 0 Kč</div> <!-- Zobrazení ceny za student vstupenku -->
+            <label for="adult_tickets">Počet dospělých vstupenek:</label> <!-- Popisek pro pole pro zadání počtu dospělých vstupenek -->
+            <input type="number" id="adult_tickets" name="adult_tickets" min="0" onchange="calculateTotal()"> <!-- Pole pro zadání počtu dospělých vstupenek -->
+            <div id="adultPrice">Cena za dospělou vstupenku: 0 Kč</div> <!-- Zobrazení ceny za dospělou vstupenku -->
+            <label for="child_tickets">Počet dětských vstupenek:</label> <!-- Popisek pro pole pro zadání počtu dětských vstupenek -->
+            <input type="number" id="child_tickets" name="child_tickets" min="0" onchange="calculateTotal()"> <!-- Pole pro zadání počtu dětských vstupenek -->
+            <div id="childPrice">Cena za dětskou vstupenku: 0 Kč</div> <!-- Zobrazení ceny za dětskou vstupenku -->
+            <!-- Možnost platby přes ISIC -->
+            <input type="checkbox" id="isic" name="isic" onchange="toggleIsicInput()"> <!-- Zaškrtávací pole pro platbu přes ISIC -->
+            <label for="isic">Platba přes ISIC</label> <!-- Popisek pro pole pro platbu přes ISIC -->
+            <!-- Pole pro zadání čísla ISIC karty -->
+            <div id="isicInput">
+                <label for="isic_number">Číslo ISIC karty:</label> <!-- Popisek pro pole pro zadání čísla ISIC karty -->
+                <input type="text" id="isic_number" name="isic_number"> <!-- Pole pro zadání čísla ISIC karty -->
+            </div>
+            <!-- Celková cena a tlačítko pro odeslání rezervace -->
+            <div id="totalPrice">Celková cena: 0 Kč</div> <!-- Zobrazení celkové ceny vstupenek -->
+            <button type="submit">Odeslat rezervaci</button> <!-- Tlačítko pro odeslání rezervace -->
+        </form>
+        <!-- Potvrzení rezervace -->
+        <div id="confirmation" style="display:none; color:green; margin-top:10px;">Rezervace úspěšně odeslána!</div> <!-- Zpráva o úspěšné rezervaci (zobrazená po odeslání formuláře) -->
+    </section>
+
+    <!-- JavaScript pro výpočet cen a zobrazení pole pro ISIC -->
+    <script>
+        function calculateTotal() {
+            // Získání hodnot počtu vstupenek a stavu platby přes ISIC
+            var seniorTickets = parseInt(document.getElementById('senior_tickets').value);
+            var studentTickets = parseInt(document.getElementById('student_tickets').value);
+            var adultTickets = parseInt(document.getElementById('adult_tickets').value);
+            var childTickets = parseInt(document.getElementById('child_tickets').value);
+            var isicChecked = document.getElementById('isic').checked;
+
+            // Nastavení výchozích cen vstupenek pro jednotlivé divadelní hry
+            var prices = {
+                "hamlet": { "senior": 250, "student": 200, "adult": 300, "child": 150 },
+                "don_giovanni": { "senior": 280, "student": 220, "adult": 350, "child": 180 },
+                "romeo_a_julie": { "senior": 220, "student": 180, "adult": 250, "child": 120 },
+                "vesele_panic": { "senior": 300, "student": 250, "adult": 350, "child": 200 }
+            };
+
+            // Pokud je zaškrtnuto pole pro platbu přes ISIC, aplikuj slevu 20%
+            if (isicChecked) {
+                for (var key in prices) {
+                    for (var ticketType in prices[key]) {
+                        prices[key][ticketType] *= 0.8;
+                    }
+                }
+            }
+
+            // Výpočet celkové ceny vstupenek
+            var totalPrice = seniorTickets * prices[document.getElementById('show').value]["senior"] +
+                             studentTickets * prices[document.getElementById('show').value]["student"] +
+                             adultTickets * prices[document.getElementById('show').value]["adult"] +
+                             childTickets * prices[document.getElementById('show').value]["child"];
+
+            // Zobrazení celkové ceny a ceny za jednotlivé typy vstupenek
+            document.getElementById('totalPrice').innerHTML = "Celková cena: " + totalPrice + " Kč";
+            document.getElementById('seniorPrice').innerHTML = "Cena za senior vstupenku: " + (seniorTickets * prices[document.getElementById('show').value]["senior"]) + " Kč";
+            document.getElementById('studentPrice').innerHTML = "Cena za student vstupenku: " + (studentTickets * prices[document.getElementById('show').value]["student"]) + " Kč";
+            document.getElementById('adultPrice').innerHTML = "Cena za dospělou vstupenku: " + (adultTickets * prices[document.getElementById('show').value]["adult"]) + " Kč";
+            document.getElementById('childPrice').innerHTML = "Cena za dětskou vstupenku: " + (childTickets * prices[document.getElementById('show').value]["child"]) + " Kč";
+        }
+
+        function toggleIsicInput() {
+            // Získání elementu pro zadání čísla ISIC karty
+            var isicInput = document.getElementById('isicInput');
+            // Zobrazení/skrytí pole pro zadání čísla ISIC karty podle stavu zaškrtnutí pole pro platbu přes ISIC
+            isicInput.style.display = document.getElementById('isic').checked ? 'block' : 'none';
+            // Znovu vyhodnocení cen po změně možnosti platby přes ISIC
+            calculateTotal();
+        }
+
+        function confirmReservation() {
+            // Zobrazení zprávy o úspěšné rezervaci po odeslání formuláře
+            document.getElementById('confirmation').style.display = 'block';
+            return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Variables a Matematické Operace</title>
+<link rel="stylesheet" type="text/css" href="style_31_1_2024.css">
+</head>
+<body>
+
+<h1>JavaScript Variables a Matematické Operace</h1>
+
+<button class="operation-button" onclick="showOperation('addition')">Sčítání (a + b)</button>
+<div id="addition" class="operation">
+    <fieldset class="input-frame">
+        <legend>Výpočet:</legend>
+        <p>a = <input type="number" id="addition-a"></p>
+        <p>b = <input type="number" id="addition-b"></p>
+    </fieldset>
+    <button class="calculate-button" onclick="calculate('addition')">Spočítat</button>
+    <p><strong>Výsledek:</strong> <span id="addition-result" class="result"></span></p>
+    <p id="addition-calculation" class="calculation" style="display: none;"></p>
+</div>
+
+<button class="operation-button" onclick="showOperation('subtraction')">Odčítání (a - b)</button>
+<div id="subtraction" class="operation">
+    <fieldset class="input-frame">
+        <legend>Výpočet:</legend>
+        <p>a = <input type="number" id="subtraction-a"></p>
+        <p>b = <input type="number" id="subtraction-b"></p>
+    </fieldset>
+    <button class="calculate-button" onclick="calculate('subtraction')">Spočítat</button>
+    <p><strong>Výsledek:</strong> <span id="subtraction-result" class="result"></span></p>
+    <p id="subtraction-calculation" class="calculation" style="display: none;"></p>
+</div>
+
+<button class="operation-button" onclick="showOperation('multiplication')">Násobení (a * b)</button>
+<div id="multiplication" class="operation">
+    <fieldset class="input-frame">
+        <legend>Výpočet:</legend>
+        <p>a = <input type="number" id="multiplication-a"></p>
+        <p>b = <input type="number" id="multiplication-b"></p>
+    </fieldset>
+    <button class="calculate-button" onclick="calculate('multiplication')">Spočítat</button>
+    <p><strong>Výsledek:</strong> <span id="multiplication-result" class="result"></span></p>
+    <p id="multiplication-calculation" class="calculation" style="display: none;"></p>
+</div>
+
+<button class="operation-button" onclick="showOperation('division')">Dělení (a / b)</button>
+<div id="division" class="operation">
+    <fieldset class="input-frame">
+        <legend>Výpočet:</legend>
+        <p>a = <input type="number" id="division-a"></p>
+        <p>b = <input type="number" id="division-b"></p>
+    </fieldset>
+    <button class="calculate-button" onclick="calculate('division')">Spočítat</button>
+    <p><strong>Výsledek:</strong> <span id="division-result" class="result"></span></p>
+    <p id="division-calculation" class="calculation" style="display: none;"></p>
+</div>
+
+<button class="operation-button" onclick="showOperation('power')">Mocnina (a<sup>b</sup>)</button>
+<div id="power" class="operation">
+    <fieldset class="input-frame">
+        <legend>Výpočet:</legend>
+        <p>a = <input type="number" id="power-a"></p>
+        <p>b = <input type="number" id="power-b"></p>
+    </fieldset>
+    <button class="calculate-button" onclick="calculate('power')">Spočítat</button>
+    <p><strong>Výsledek:</strong> <span id="power-result" class="result"></span></p>
+    <p id="power-calculation" class="calculation" style="display: none;"></p>
+</div>
+
+<button class="operation-button" onclick="showOperation('root')">Odmocnina (a<sup>1/n</sup>)</button>
+<div id="root" class="operation">
+    <fieldset class="input-frame">
+        <legend>Výpočet:</legend>
+        <p>a = <input type="number" id="root-a"></p>
+        <p>n = <input type="number" id="root-n"></p>
+    </fieldset>
+    <button class="calculate-button" onclick="calculate('root')">Spočítat</button>
+    <p><strong>Výsledek:</strong> <span id="root-result" class="result"></span></p>
+    <p id="root-calculation" class="calculation" style="display: none;"></p>
+</div>
+
+
+
+<button class="operation-button" onclick="showOperation('percentage')">Procenta (a % b)</button>
+<div id="percentage" class="operation">
+    <fieldset class="input-frame">
+        <legend>Výpočet:</legend>
+        <p>a = <input type="number" id="percentage-a"></p>
+        <p>b = <input type="number" id="percentage-b"></p>
+    </fieldset>
+    <button class="calculate-button" onclick="calculate('percentage')">Spočítat</button>
+    <p><strong>Výsledek:</strong> <span id="percentage-result" class="result"></span></p>
+    <p id="percentage-calculation" class="calculation" style="display: none;"></p>
+</div>
+
+<script src="script_31_1_2024.js"></script>
+
+</body>
+</html>

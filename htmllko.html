@@ -1,0 +1,109 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Writing Examples</title>
+    <link rel="stylesheet" type="text/css" href="css.css">
+</head>
+<body>
+
+<h1>Calculate School Absence Percentage</h1>
+
+<form id="absenceForm">
+    <label for="totalDays">Total Days of School:</label>
+    <input type="number" id="totalDays" required>
+
+    <br>
+
+    <label for="absentDays">Absent Days:</label>
+    <input type="number" id="absentDays" required>
+
+    <br>
+
+    <button type="button" onclick="calculatePercentage()">Calculate Percentage</button>
+</form>
+
+<p id="result"></p>
+
+<script>
+    function calculatePercentage() {
+        var totalDays = parseFloat(document.getElementById("totalDays").value);
+        var absentDays = parseFloat(document.getElementById("absentDays").value);
+
+        if (isNaN(totalDays) || isNaN(absentDays) || totalDays <= 0 || absentDays < 0 || absentDays > totalDays) {
+            alert("Please enter valid values.");
+            return;
+        }
+
+        var absencePercentage = (absentDays / totalDays) * 100;
+        document.getElementById("result").innerHTML = "Absence Percentage: " + absencePercentage.toFixed(2) + "%";
+    }
+</script>
+
+
+
+<script>
+    document.getElementById("demo").innerHTML =( 5 + 6 )
+    </script>
+
+<script>
+    document.write(5 + 6);
+</script>
+
+<button type="button" onclick="document.write(5 + 6)">Try it</button>
+
+<script>
+    window.alert(5 + 6);
+    </script>
+
+<script>
+    console.log(5 + 6);
+    </script>
+
+<script>
+    // Příklad 1: Sčítání
+    let a, b, c;
+    a = 5;
+    b = 6;
+    c = a + b;
+    console.log("Příklad 1:", c);
+
+    // Příklad 2: Odčítání
+    let x, y, z;
+    x = 10;
+    y = 3;
+    z = x - y;
+    console.log("Příklad 2:", z);
+
+    // Příklad 3: Násobení
+    let p, q, r;
+    p = 4;
+    q = 9;
+    r = p * q;
+    console.log("Příklad 3:", r);
+
+    // Příklad 4: Dělení
+    let m, n, o;
+    m = 20;
+    n = 5;
+    o = m / n;
+    console.log("Příklad 4:", o);
+
+    // Příklad 5: Modulo
+    let d, e, f;
+    d = 15;
+    e = 7;
+    f = d % e;
+    console.log("Příklad 5:", f);
+
+    // Příklad 6: Kombinace operací
+    let g, h, i, j;
+    g = 8;
+    h = 3;
+    i = 2;
+    j = g * h + i;
+    console.log("Příklad 6:", j);
+</script>
+
+</body>
+</html>
