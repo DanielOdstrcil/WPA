@@ -1,0 +1,27 @@
+/* Základní styly pro celou stránku */
+body {
+    font-family: Arial, sans-serif;
+    margin: 50px;
+    background-color: #1c1c1c; /* Černé pozadí */
+    color: #fff; /* Bílý text */
+}
+
+/* Styl pro nadpis stránky */
+h1 {
+    color: #ffd700; /* Zlatá barva */
+    text-align: center; /* Zarovnání textu na střed */
+}
+
+/* Styl pro výsledky metod */
+.result {
+    background-color: #000; /* Černé pozadí */
+    padding: 10px; /* Odstup uvnitř kontejneru */
+    margin-bottom: 10px; /* Odstup mezi jednotlivými kontejnery */
+    border-radius: 5px; /* Zaoblené rohy */
+}
+
+/* Styl pro zvýraznění textu v nadpisech výsledků */
+.result span {
+    font-weight: bold; /* Tučné písmo */
+    color: #ffd700; /* Zlatá barva */
+}

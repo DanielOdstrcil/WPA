@@ -1,0 +1,103 @@
+/* Základní styly pro stránku */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px; /* Odsazení mezi tlačítky */
+}
+
+nav ul li:last-child {
+    margin-right: 0; /* Odstranění odsazení u posledního tlačítka */
+}
+
+nav ul li a {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #800000;
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+main section {
+    margin-bottom: 20px; /* Odsazení mezi jednotlivými sekcemi */
+}
+
+main h2 {
+    color: #b30000;
+    margin-top: 0; /* Odstranění horního odsazení nad nadpisy */
+}
+
+/* Styly pro formulář */
+form label {
+    display: block; /* Zobrazení popisku na novém řádku */
+    margin-bottom: 5px; /* Odsazení mezi popisky */
+    font-weight: bold; /* Tučné písmo */
+}
+
+form input, form select {
+    width: 100%; /* Šířka na 100% */
+    margin-bottom: 10px; /* Odsazení mezi poli */
+    padding: 8px; /* Odsazení uvnitř pole */
+    border-radius: 5px; /* Zaoblené rohy */
+    border: 1px solid #ccc; /* Ohraničení pole */
+}
+
+form button {
+    background-color: #333; /* Barva pozadí */
+    color: #fff; /* Barva textu */
+    padding: 10px 20px; /* Odsazení */
+    border: none; /* Žádné ohraničení */
+    border-radius: 5px; /* Zaoblené rohy */
+    cursor: pointer; /* Ukazatel ruky při najetí myší */
+}
+
+form button:hover {
+    background-color: #555; /* Barva pozadí při najetí myší */
+}
+
+/* Styly pro footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}

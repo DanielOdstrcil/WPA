@@ -1,0 +1,203 @@
+
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f0ece2; 
+    color: #333;
+}
+
+
+header {
+    background-color: #93c572; 
+    color: #fff;
+    text-align: center;
+    padding: 1em 0;
+}
+
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 8px
+    }
+    
+    main {
+        padding: 20px;
+        }
+    
+    #map    {
+        height: 300px;
+        width: 400px;
+        border: 5px solid #93c572; 
+        border-radius: 10px;
+        }
+
+
+        .hotel-button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .dropdown {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            top: 100%; /* Zobrazí nabídku pod tlačítkem */
+            left: 0; /* Zarovná nabídku s tlačítkem */
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Zobrazovat podkategorie pouze při najetí kurzoru */
+.subcategory .sub-content {
+    display: none;
+}
+
+.subcategory:hover .sub-content {
+    display: block;
+}
+
+
+/* Upravte styly pro tlačítka s podkategoriemi */
+.subcategory {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px; /* Upřesnění mezery mezi tlačítky */
+}
+
+.sub-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 0;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.subcategory:hover .sub-content {
+    display: block;
+}
+
+.sub-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+}
+
+.sub-content a:last-child {
+    border-bottom: none;
+}
+
+#map-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+    margin: 0;
+    }
+
+
+
+.category-button {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+
+.sub-content a {
+    background-color: black;
+    color: white;
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    border-bottom: 1px solid #ddd;
+}
+
+.sub-content a:last-child {
+    border-bottom: none;
+}
+
+@media screen and (max-width: 600px) {
+    .subcategory {
+        display: block;
+        margin-right: 0;
+    }
+
+    .sub-content {
+        position: static;
+        display: none;
+    }
+
+    .sub-content a {
+        display: block;
+        padding: 10px;
+        text-decoration: none;
+        color: #333;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .sub-content a:last-child {
+        border-bottom: none;
+    }
+
+    .category-button {
+        display: block;
+        margin: 10px auto;
+    }
+
+    #map-container {
+        height: auto;
+    }
+}
